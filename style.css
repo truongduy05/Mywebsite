@@ -111,7 +111,6 @@ nav {
 .mega-menu {
     position: absolute;
     top: 100%;
-    left: 50%;
     transform: translateX(-50%);
     width: 500px;
     background-color: #fff;
@@ -853,4 +852,5 @@ footer p {
         font-size: 28px;
     }
 }
+
 
