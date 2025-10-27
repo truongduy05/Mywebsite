@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:"Poppins", sans-serif;
+}
+body {
+    background-color: #fff;       /* Màu trắng */
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 80px;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index:100;
+    
+
+}
+
+.logo img {
+    height: 60px;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+nav ul li a{
+    text-decoration: none;
+    color:#424040;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: rgb(114, 197, 197);
+}
+.nav-icons {
+    color: #554c4c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40vw;
+    gap: 20px;
+}
+.nav-iocons .icon {
+    font-size: 22px;
+    color:#424040;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.2s;
+}
+.nav-icons .icon:hover {
+    color: #00b16a;
+    transform: scale(1.1);
+}
+.menu-list {
+    display: flex;
+    justify-content: start;
+    margin-left: 40vw;
+}
+.banner {
+  width: 100%;       /* Chiều ngang = 100% màn hình */
+  height: 500px;      /* Chiều cao = 100% màn hình */
+  overflow: hidden;
+  position: relative;
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  width: calc(4 * 100vw); /* 4 ảnh = 4 * 100vw (each slide is full viewport width) */
+  height: 100%;
+  animation: slide-show 8s infinite ease-in-out;
+}
+
+/* Make each direct child of .slides a full viewport-width slide */
+.slides > * {
+  width: 100vw;
+  height: 100%;
+  flex: 0 0 100vw; /* prevent shrinking/growing */
+  position: relative;
+}
+
+.slides img {
+  width: 100%;       /* image fills the slide */
+  height: 100%;
+  object-fit: cover;  /* Ảnh vừa khung mà không méo */
+  display: block;
+}
+
+/* Hiệu ứng trượt từng ảnh */
+@keyframes slide-show {
+  0%, 20% { transform: translateX(0); }         /* Ảnh 1 */
+  25%, 45% { transform: translateX(-100vw); }   /* Ảnh 2 */
+  50%, 70% { transform: translateX(-200vw); }   /* Ảnh 3 */
+  75%, 95% { transform: translateX(-300vw); }   /* Ảnh 4 */
+  100% { transform: translateX(0); }            /* Quay lại Ảnh 1 */
+}
+/* ---- Chấm tròn ---- */
+.dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  animation: dotHighlight 8s infinite;
+}
+
+/* Mỗi chấm delay khác nhau để sáng đúng lúc */
+.dots span:nth-child(1) { animation-delay: 0s; }
+.dots span:nth-child(2) { animation-delay: 2s; }
+.dots span:nth-child(3) { animation-delay: 4s; }
+.dots span:nth-child(4) { animation-delay: 6s; }
+
+@keyframes dotHighlight {
+  0%, 24%   { background-color: white; transform: scale(1.2); }
+  25%, 100% { background-color: rgba(255, 255, 255, 0.5); transform: scale(1); }
+}
+
+/* Mũi tên trang trí (không cần JS) */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  border-radius: 50%;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.arrow:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.arrow.left { left: 20px; }
+.arrow.right { right: 20px; }
+
+/* Dừng khi rê chuột */
+.slider:hover .slides {
+  animation-play-state: paused;
+}
